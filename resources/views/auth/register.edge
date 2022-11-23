@@ -1,0 +1,46 @@
+@layout('../layouts/main')
+@set('title', 'Register')
+
+@section('body')
+<h1 class="title">Register</h1>
+<p class="subtitle mt-2">Please fill these forms to register your account.</p>
+<form action="{{route('/register')}}" method="POST">
+    
+    {{ csrfField() }}
+
+    @!component('../components/input', {
+        label: 'Email Address',
+        id: 'email',
+        type: 'email',
+        placeholder: "Enter your email..."
+    })
+    @!component('../components/input', {
+        label: 'Username',
+        id: 'username',
+        type: 'text',
+        placeholder: "Enter your username..."
+    })
+    @!component('../components/input', {
+        label: 'Password',
+        id: 'password',
+        type: 'password',
+        placeholder: "Enter your password..."
+    })
+    @!component('../components/input', {
+        label: 'Address',
+        id: 'address',
+        type: 'text',
+        placeholder: "Enter your address..."
+    })
+    @!component('../components/input', {
+        label: 'Phone Number',
+        id: 'phone',
+        type: 'text',
+        placeholder: "Enter your phone number..."
+    })
+
+    <p>Or login <a href="/login">here</a></p>
+    <br>
+    <button class="button is-primary is-fullwidth" type="submit">Register</button>
+</form>
+@end

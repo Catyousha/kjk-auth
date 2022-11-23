@@ -1,0 +1,21 @@
+@layout('../layouts/main')
+@set('title', 'Forgot Password')
+
+@section('body')
+<h1 class="title">Forgot Password</h1>
+<p class="subtitle mt-2">Enter email that is linked with your account.</p>
+@if(flashMessages.has('emailCheckFailed'))
+    <p class="mb-2" style="color: red;">{{flashMessages.get('emailCheckFailed')}}</p>
+@end
+<form action="{{route('/forgot-password')}}" method="POST">
+    {{ csrfField() }}
+    @!component('../components/input', {
+        label: 'Email',
+        id: 'email',
+        type: 'email',
+        placeholder: "Enter your email..."
+    })
+    <br>
+    <button class="button is-primary is-fullwidth" type="submit">Send Activation Code</button>
+</form>
+@end

@@ -1,0 +1,35 @@
+@layout('../layouts/main')
+@set('title', 'Login')
+
+@section('body')
+<h1 class="title">Login</h1>
+<p class="subtitle mt-2">Please login with your account.</p>
+@if(flashMessages.has('registerSuccess'))
+    <p class="mb-2" style="color: green;">{{flashMessages.get('registerSuccess')}}</p>
+@end
+@if(flashMessages.has('resetPassSuccess'))
+    <p class="mb-2" style="color: green;">{{flashMessages.get('resetPassSuccess')}}</p>
+@end
+@if(flashMessages.has('loginFailed'))
+    <p class="mb-2" style="color: red;">{{flashMessages.get('loginFailed')}}</p>
+@end
+<form action="{{route('/login')}}" method="POST">
+    {{ csrfField() }}
+    @!component('../components/input', {
+        label: 'Username',
+        id: 'username',
+        type: 'text',
+        placeholder: "Enter your username..."
+    })
+    @!component('../components/input', {
+        label: 'Password',
+        id: 'password',
+        type: 'password',
+        placeholder: "Enter your password..."
+    })
+    <p>Or register <a href="/register">here</a></p>
+    <a href="/forgot-password">Forgot password?</a>
+    <br><br>
+    <button class="button is-primary is-fullwidth" type="submit">Login</button>
+</form>
+@end

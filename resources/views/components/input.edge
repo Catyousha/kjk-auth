@@ -1,0 +1,15 @@
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">{{label}}</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <input name="{{id}}" class="input" type="{{type}}" placeholder="{{placeholder}}" value="{{flashMessages.get(id, '')}}">
+          @if(flashMessages.has('messages.'+id))
+             <p style="color: red;">{{ flashMessages.get('messages.'+id) }}</p>
+          @end
+        </p>
+      </div>
+    </div>
+</div>
